@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<font>-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!--<title>-->
+    <title>vote</title>
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <!--<style>-->
+    <style>
+        
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            background-color: #F7F8F0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-family: 'IBM Plex Sans Thai', 'IBM Plex Sans', sans-serif;
+            overflow: visible;
+            z-index: 10;
+            border-radius: 0 1rem 1rem 0;
+            margin-top: 5px;
+            
+        }
+        .logo {
+            font-family: "romantic";
+            letter-spacing: 0.7rem;
+            font-size: 2.5rem;
+            padding: 2rem;
+            font-weight: 1000;
+            color: #355872;
+           
+            
+        }
+        .nav-links {
+            display: grid;
+            grid-auto-rows:4rem;
+            list-style: none;    /* เอาจุดหน้าลิสต์ออก */
+            gap: 10px;
+            padding: 0px;
+            
+            flex-grow: 1;
+            overflow-y: auto;
+            direction: rtl;
+            margin: 0;
+            
+        }
+        .nav-links li {
+            padding-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            overflow-x: visible;
+            direction: ltr;
+        }
+
+        .nav-links a {
+            text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+            color: #355872;
+            transition: color 0.3s;
+            font-weight: bold;
+            background-color: #BFDBFE;
+            border-radius: 1em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            align-items: center;
+            padding: 1rem;
+            width: 10rem;
+        }
+        .nav-links span {
+            padding-left: 1rem
+        }
+
+        .nav-links a:not(.active):hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            
+        }
+       .nav-links::-webkit-scrollbar {
+            background-color: transparent;
+            width: 10px;
+        }
+        .nav-links::-webkit-scrollbar-thumb {
+            background-color: lavender;
+            border-radius: 1rem;
+            
+        }
+        .acc {
+            color: #355872;
+            transition: color 0.3s;
+            background-color: #BFDBFE;
+            border-radius: 1em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            width: 12rem;
+            margin-bottom: 0.5rem;
+            
+        }
+
+        .nav-links a.active {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+            z-index: 20;
+            
+            
+        }
+
+    </style>
+    <!--<stylesheet>-->
+    <link rel="stylesheet" href="style.css">
+    <!--<lucide>-->
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Essentials</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active"><span>หน้าหลัก</span><div class="icon-chevron-right"></div></a></li>
+            <li><a href="note.html"><span>โน้ต</span><div class="icon-chevron-right"></div></a></li>
+            <li><a href="vote.html"><span>โหวต</span><div class="icon-chevron-right"></div></a></li>
+            <li><a href="#"><span>สุ่ม</span><div class="icon-chevron-right"></div></a></li>
+            
+            
+        </ul>
+        <div class="acc">account</div>
+    </nav>
+    <main class="content-area">
+       
+    </main>
+    
+    
+
+</body>
+<script>
+    
+    function loadPage(pageUrl) {
+        if (pageUrl === "#" || !pageUrl) return;
+        fetch(pageUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.content-area').innerHTML = data;
+            })
+            .catch(err => console.error('Error:', err));
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        loadPage('dashboard.html');
+        
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.getAttribute('href');
+            
+            document.querySelectorAll('.nav-links a').forEach(nav => {
+                nav.classList.remove('active');
+            });
+            this.classList.add('active');
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('.content-area').innerHTML = data;
+                });
+        });
+    });
+    function activateNav(targetHref) {
+        const navLink = window.parent.document.querySelector(`.nav-links a[href="${targetHref}"]`); 
+        if (navLink) {
+            navLink.click();
+        } else {
+            if (typeof loadPage === 'function') loadPage(targetHref);
+        }
+    }    
+</script>
