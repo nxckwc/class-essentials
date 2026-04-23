@@ -1,0 +1,9 @@
+.ran {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border: solid;
+    padding: 0;
+    height: 99vh;
+}
