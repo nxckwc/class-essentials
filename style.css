@@ -1,35 +1,4 @@
-<<<<<<< HEAD
-@font-face {
-    font-family: "romantic";
-    src: url(fonts/ROMANTIC.TTF);
-    
-}
 
-
-body {
-    height: 100vh;
-    margin: 0;
-    background-color: #F0F7FF;
-    display: grid;
-    grid-template-columns: 15rem 1fr;
-    grid-template-rows: 100vh;
-    overflow: hidden;
-}
-
-.border {
-    border: solid;
-}
-
-
-
-.grid-container {
-    display: grid;
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-=======
 @font-face {
     font-family: "romantic";
     src: url(fonts/ROMANTIC.TTF);
@@ -53,4 +22,3 @@ body {
 .border {
     border: solid;
 }
->>>>>>> 37f18f4 (v1.1.0)
