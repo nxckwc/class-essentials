@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <head>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
@@ -245,3 +246,224 @@
         <div class="border"></div>
     </div>
 </section>
+=======
+<head>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+
+    .overview {
+        display: grid;
+        gap: 5px;
+        grid-template-columns: 250px 1fr;
+        min-height: 0;
+        transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .overview.collapsed {
+        grid-template-columns: 45px 1fr;
+        transition: grid-template-columns 0.3s ease;
+        
+    }
+    .height-collapsed {
+        max-height: 40px !important;
+    }
+    .width-collapsed {
+        grid-template-columns: 45px 1fr !important;
+    }
+    .overview.collapsed .filter-text {
+        transform: translateX(-200%);
+        position: absolute;
+        overflow: hidden;
+    }
+    .overview.collapsed .sidebar {
+        max-height: 40px;
+        transition: max-height 0.3s ease 0.3s;
+    }
+    .sidebar {
+        overflow: hidden;
+        max-height: 1000px;
+        transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        
+    }
+    .filter {
+        display: flex;
+        box-shadow: 0.5px 3.5px 3.5px rgb(53, 88, 114,0.05);
+        font-family: "IBM Plex Sans";
+        font-weight: 600;
+        align-items: center;
+        position: relative;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        overflow: hidden;
+        
+    }
+    .filter-text {
+        position: absolute;
+        left: 10px;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        display: inline-block;
+        color: #355872;
+        pointer-events: none;
+        font-family: "IBM Plex Sans Thai";
+        font-weight: 900;
+    }
+   .icon-menu {
+        margin-left: auto;
+        cursor: pointer;
+   }
+   /* Styling for the empty state container */
+    .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        grid-row: 1 / -1; /* Spans across the grid if .result is a grid */
+        grid-column: 1 / -1;
+        padding: 40px;
+        
+        color: #BFDBFE;
+        font-family: 'IBM Plex Sans Thai';
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    .empty-state .icon-circle-alert {
+        font-size: 4rem;
+        margin-bottom: 10px;
+        opacity: 0.5;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+<section class="viewport" style="position: relative;">
+    <div class="hero-card">
+        <div class="homework">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                 <div style="font-weight: bolder; font-size: 1.5rem; padding-left: 20px;">การบ้าน</div>
+                 <div style="font-weight: 600; padding-right: 20px;font-family: IBM Plex Sans;">subject</div>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; font-size: 5rem; font-weight: 900;font-family: 'IBM Plex Sans', sans-serif;">1</div>
+            <div style="display: flex; justify-content: right;margin-right: 25px; font-weight: bold;align-items: center;font-family: IBM Plex Sans; margin-right: 50px;">
+                <div class="icon-clock-4" style="font-size: 1.3rem;margin-right: 5px;"></div>
+                <div class="dead">deadline</div>
+            </div>
+            <svg class="paw" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#F0F7FF" stroke="#F0F7FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paw-print-icon lucide-paw-print">
+                <defs>
+                    <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feComponentTransfer in="SourceAlpha">
+                            <feFuncA type="table" tableValues="1 0" />
+                        </feComponentTransfer>
+                        <feGaussianBlur stdDeviation="0.8" />
+                        <feOffset dx="0.5" dy="1.5" result="offsetblur" />
+                        <feComposite operator="in" in="offsetblur" in2="SourceAlpha" result="insetshadow" />
+                        <feFlood flood-color="#355872" flood-opacity="0.4" />
+                        <feComposite operator="in" in2="insetshadow" />
+                        <feComposite operator="over" in2="SourceGraphic" />
+                    </filter>
+                </defs>
+                <g filter="url(#inset-shadow)" fill="#F0F7FF">
+                    <circle cx="11" cy="4" r="2"/>
+                    <circle cx="18" cy="8" r="2"/>
+                    <circle cx="20" cy="16" r="2"/>
+                    <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/> 
+                </g>
+            </svg>
+        </div>
+        <div class="task">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-weight: bolder; font-size: 1.5rem; padding-left: 20px;">To-do list</div>
+                <div style="font-weight: 600; padding-right: 20px;font-family: IBM Plex Sans;">type</div>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; font-size: 3rem; font-weight: 900;font-family: 'IBM Plex Sans', sans-serif;">task name</div>
+            <div style="display: flex;justify-content: space-between;">
+                <div style="margin-left:20px;display: flex; justify-content: left; font-weight: bold;align-items: center;font-family: IBM Plex Sans; margin-right: 50px;">
+                    <div class="icon-hourglass" style="margin-right: 5px;"></div>
+                    <div class="status">status</div>
+                </div>
+                <div style="display: flex; justify-content: right; font-weight: bold;align-items: center;font-family: IBM Plex Sans; margin-right: 50px;">
+                    <div class="icon-clock-4" style="font-size: 1.3rem;margin-right: 5px;"></div>
+                    <div class="dead">deadline</div>
+                </div>  
+            </div>
+        </div>
+        <div class="classes">
+            <div  style="display: flex; justify-content: space-between; align-items: center; padding-top: 5px;">
+                <div style="font-weight: bolder; font-size: 1.5rem; padding-left: 20px;">คาบ</div>
+                <div style="display: flex; align-items: center;margin-right: 20px;font-weight: 900; justify-content: center;">
+                    <div class="icon-clock-4" style="font-size: 1.3rem;margin-right: 5px;"></div>
+                    <div class="dead">วันนี้</div>
+                </div>
+            </div>
+            <div class=" midclas">
+                <div  style="display: flex; justify-content: center;flex-direction: column;align-items: center;">
+                    <div style="font-size: 3rem;font-weight: 900;line-height: 30px;padding-top: 30px;">class</div>
+                    <div  style="display: flex;flex-direction: row; justify-content: center;align-items: center;color: #f1f1f1;font-weight: 500;">
+                        <div id="startclas">start</div>
+                        <div>-</div>
+                        <div id="endclas">end</div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="btnclas botclas" onclick="loadPage('classes.html'); activateNav('note.html');" style="cursor: pointer; display: flex;justify-content: center;align-items: center;background-color: #BFDBFE;margin: 10px;border-radius: 12px;">
+                <div  style="color: #f1f1f1; font-weight: 900;display: flex;flex-direction: row; align-items: center;margin-left: 8px;">ตารางเรียน<div class="chevclas icon-chevron-right" style="margin-left: 10px;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bar">
+        <div style="color: #93C5FD; font-family: 'IBM Plex Sans Thai';font-weight: 900; margin-left: 50px;font-size: 2rem; display: flex;flex-direction: row; align-items: center;">
+            <div class="icon-cloud" style="margin: 10px; font-size: 2.5rem;"></div>
+            <div>
+                บอร์ดรวม
+            </div>
+        </div>
+        <!-- <div style="display: flex;flex-direction: row;">
+            <div class="searchbar">
+                <input type="search" class="search" placeholder="search. . .">
+                <div class="icon-search iconsearch" style="font-size: 1.5rem;"></div>
+            </div>
+            
+        </div> -->
+    </div>
+
+    <div class="overview collapsed"id="filter">
+        
+        <div class="sidebar" style="white-space: nowrap; background-color: white; border-radius: 0.5rem; z-index: 10;">
+            <aside class="filter-bar" style="display: grid;grid-template-rows: 40px 1fr; ">
+
+                <div class="filter">
+                    <div class="filter-text">คลัง</div>
+                    <div class="icon-menu" style="font-size: 1.5rem; color: #93C5FD;"onclick="toggleFilter()"></div>
+                </div>
+
+                <div style="min-height: 0;overflow-y:auto;">
+                    
+                </div>
+
+            </aside>
+        </div>
+
+        <div class="result" >
+
+        </div>
+
+    </div>
+    <div style="color:#BFDBFE;position: absolute; display: flex;flex-direction:column;left: 21px;bottom: 20px;z-index: 1;font-family: 'vague';font-weight: 500;justify-content: space-evenly; align-items: center;height: calc(anchor-size(--myResult height) - 70px);font-size: 1.5rem;">
+        <div style="display: flex;justify-content: center;">K</div>
+        <div style="display: flex;justify-content: center;">i</div>
+        <div style="display: flex;justify-content: center;">n</div>
+        <div style="display: flex;justify-content: center;">g</div>
+        <div style="display: flex;justify-content: center;">s</div>
+        <div style="display: flex;justify-content: center;">c</div>
+        <div style="display: flex;justify-content: center;">l</div>
+        <div style="display: flex;justify-content: center;">a</div>
+        <div style="display: flex;justify-content: center;">s</div>
+        <div style="display: flex;justify-content: center;">s</div>
+    </div>
+</section>
+>>>>>>> 37f18f4 (v1.1.0)

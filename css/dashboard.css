@@ -1,0 +1,159 @@
+
+.viewport {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows:12rem 0.15fr 1fr;
+    gap: 5px;
+    padding: 5px;
+    
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    min-height: 0;
+    max-height: 100vh;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.hero-card {
+    display: grid;
+    grid-template-columns:minmax(300px, 1.5fr) minmax(300px, 1.5fr) minmax(250px, 1.2fr);
+    gap: 5px;
+    color: #93C5FD;
+    font-family: "IBM Plex Sans Thai";
+}
+
+/*#region homework card*/
+.homework {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows: 1fr 5rem 1fr;
+    background-color: white;
+    position: relative;
+    border-radius: 1rem;
+}
+.paw {
+    grid-row: 3; 
+    position: absolute;
+    left: 5px; 
+    bottom: 5px;
+    opacity: 0.8;
+    transform: rotate(-15deg);
+}
+/*#endregion*/
+
+.task {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows: 1fr 5rem 1fr;
+    background-color: white;
+    position: relative;
+    border-radius: 1rem;
+}
+
+/* #region class card */
+.classes {
+    color: white;
+    box-sizing: border-box;
+    background-color: #93C5FD;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1.2fr;
+}
+.btnclas {
+    transition: all 0.3s ease;
+}
+.btnclas:hover {
+        transform: scale(1.03);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+.btnclas:hover .chevclas {
+    transition: all 0.5s ease;
+    transform: translate(5px);        
+}
+/* #endregion */
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.bar {
+    background-color: white;
+    box-shadow: 3.5px 0.5em 0.6em rgba(127, 183, 225, 0.4);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    outline: none;
+    z-index: 10;
+}
+
+/* #region serachbar */
+
+.searchbar {
+    background-color: #EFF6FF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: inset 3.5px 0.5em 0.6em rgba(127, 183, 225, 0.4);
+    margin-right: 10%;
+    width: 400px;
+    border-radius: 2rem;
+}
+.searchbar input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    display: none;
+}
+.search {
+    margin-left: 10px;
+    border: none;
+    color: #93C5FD;
+    font-family: "IBM Plex Sans", "IBM Plex Sans Thai";
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: transparent;
+    padding:20px;
+}
+.search:focus {
+    outline: none;
+    border: none;
+}
+.search:not(:placeholder-shown) ~ .iconsearch {
+    color: white;
+}
+.iconsearch {
+    color: transparent;
+}
+
+/* #endregion */
+
+.result-content {
+    background-color: #BFDBFE;
+    display: grid;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
+    border-radius: 1rem;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.result {
+    anchor-name: --myResult;
+    background-color: white;
+    overflow: visible;
+    overflow-y: auto;
+    display: grid;
+    grid-auto-rows: minmax(100px, 150px);
+    min-height: 0;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.result:has(#emptyState) {
+    grid-auto-rows: 1fr; /* เปลี่ยนจาก 150px เป็น 'พื้นที่ที่เหลือทั้งหมด' */
+    
+}
+.result::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+}
+.result::-webkit-scrollbar-thumb {
+    background-color: lavender;
+    border-radius: 1rem;
+}
